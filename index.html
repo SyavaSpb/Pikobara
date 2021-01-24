@@ -5,58 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pikobara</title>
+  <link rel="stylesheet" href="style/css/index.css">
 </head>
+
 <body>
 
-  <header classs="header">
-    <img src="" class="header__logo">
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Work</a>
-      <a href="#">About</a>
-      <a href="#">Community</a>
-      <a href="#">Blog</a>
-      <a href="#">Careers</a>
-      <a href="#">Contact</a>
+  <!-- <section class="modal">
+    <h class="modal__tittle">LET’S DO<br>SOMETHING<br><span>COOL</span> TOGETHER</h>
+    <div class="modal__form">
+
+    </div>
+  </section> -->
+
+  <header class="header">
+    <img src="icons/pikobara-logo.png" class="header__logo">
+    <nav class="nav">
+      <a href="#" class="nav__link">Home</a>
+      <a href="#" class="nav__link">Work</a>
+      <a href="#" class="nav__link">About</a>
+      <a href="#" class="nav__link">Community</a>
+      <a href="#" class="nav__link">Blog</a>
+      <a href="#" class="nav__link">Careers</a>
+      <a href="#" class="nav__link">Contact</a>
+      <a href="#">
+        <span>start <br> a project</span>
+        <img src="icons/start-icon.png">
+      </a>
     </nav>
   </header>
 
 
-  <aside>
-    <div></div>
+  <aside class="aside__slider">
+    <div class="slider__item__active"></div>
     <div></div>
     <div></div>
     <div></div>
   </aside>
 
 
-  <section class="section intro"></section>
-    <pre>Creative
-Marketing
-Agency</pre>
-    <a href="#">Learn more</a>
-    <img src="">
+  <section class="section intro">
+    <a name="1" class="anchor"></a>
+    <h>Creative<br>Marketing<br>Agency</h>
+    <br>
+    <a href="#" class="intro__button">Learn more</a>
+    <img src="img/intro.png">
   </section>
 
 
   <section class="section letsdo">
-    <h>We believe
-everything
-is <span>possible.</span></h>
-    <p>Especially today, when we have such a huge amount of data, innovations, strategies, creativity, expression, information technology. Combining these capabilities into a single integrated solution and using a user-oriented approach, we create a unique brand experience.</p>
-    <p>Pikobara is creative marketing agency passionate about brand development, creative marketing campaigns, social & digital strategy, production and marketing services. <span>SUCCESS IS NOT AN ACCIDENT.</span></p>
-    <a href="#">let's do something together</a>
+    <a name="2" class="anchor"></a>
+    <div class="letsdo__inner">
+      <h class="letsdo__tittle">We believe<br>everything<br>is<span>possible.</span></h>
+      <div class="letsdo__body">
+        <div class="letsdo__inf">
+          <p class="letsdo__p1">Especially today, when we have such a huge amount of data, innovations, strategies, creativity, expression, information technology. Combining these capabilities into a single integrated solution and using a user-oriented approach, we create a unique brand experience.</p>
+          <p class="letsdo__p2">Pikobara is creative marketing agency passionate about brand development, creative marketing campaigns, social & digital strategy, production and marketing services.<br><span>SUCCESS IS NOT AN ACCIDENT.</span></p>
+        </div>
+        <div class="letsdo__button">
+          <a href="#">let's do something together</a>
+        </div>
+      </div>
+    </div>
   </section>
 
 
-
   <section class="section capabilities">
+    <a name="3" class="anchor"></a>
+    <!-- <img src="img/capabilities.png"> -->
     <aside></aside>
   </section>
 
 
-
   <footer class="section contact">
+    <a name="4" class="anchor"></a>
 
     <div class="footer__body">
       <h>LET’S DO SOMETHING
@@ -92,6 +113,9 @@ is <span>possible.</span></h>
     </div>
 
   </footer>
+
+
+  <script src="scripts/scrolling.js"></script>
 
 </body>
 </html>

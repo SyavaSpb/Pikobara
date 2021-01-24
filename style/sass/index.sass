@@ -1,0 +1,316 @@
+*
+  margin: 0
+  padding: 0
+
+  box-sizing: border-box
+
+
+// colors:
+$blue: #57b1fa
+$blue-lighter: #01ffde
+$gray: #7d7d7c
+
+
+
+// section
+.section
+  width: 100%
+  height: 100vh
+  position: relative
+
+  .anchor
+    position: absolute
+    top: 0
+    left: 0
+
+
+@mixin back-img($url)
+  background: url($url) center no-repeat
+  background-size: cover
+  background-attachment: fixed
+
+@mixin section__tittle
+  font-family: 'Montserrat'
+  font-size: 100px
+  font-weight: 700
+  text-align: left
+  span
+    position: relative
+    background-color: $blue-lighter
+    z-index: -1
+
+
+
+// modal
+.modal
+  width: 80%
+  height: 90%
+
+  position: absolute
+  top: 50%
+  left: 50%
+
+  transform: translate(-50%, -50%)
+
+  display: flex
+  justify-content: space-between
+
+  z-index: 100
+
+  .modal__tittle
+    width: 33%
+    height: 100%
+
+    padding: 80px
+
+    @include section__tittle
+    writing-mode: vertical-rl
+    font-size: 75px
+
+    background-color: #fff
+
+    transform: rotate(180deg)
+
+    z-index: 101
+
+
+  .modal__form
+    width: 67%
+    height: 100%
+
+    @include back-img("../../img/modal-back.png")
+    background-attachment: scroll
+
+    background-color: rgba(0, 0, 0, 1)
+
+    z-index: 101
+
+
+
+// header
+.header
+  width: 100%
+  height: 80px
+
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+
+  z-index: 10
+
+  display: flex
+  justify-content: space-between
+
+  .header__logo
+    width: auto
+    height: 100%
+
+  .nav
+    >*
+      display: inline-block
+    .nav__link
+      margin: 0px 25px
+
+      color: $gray
+      text-decoration: none
+
+      position: relative
+
+      font-family: system-ui
+
+      &:hover::after
+        content: ""
+        display: block
+
+        width: 100%
+        height: 1px
+
+        position: absolute
+        top: 100%
+        left: 0
+
+        background-color: $blue-lighter
+
+
+
+// slider
+.aside__slider
+  position: fixed
+  top: 50%
+  right: 20px
+
+  transform: translate(0, -50%)
+
+  z-index: 10
+
+
+  div
+    width: 14px
+    height: 14px
+
+    margin: 14px 0px
+
+    cursor: pointer
+
+    border: 1px solid $blue-lighter
+    border-radius: 7px
+
+    transition: border linear 0.25s
+
+
+  .slider__item__active
+    width: 15px
+    height: 15px
+
+    border: 6px solid $blue-lighter
+    border-radius: 8px
+
+
+
+// intro
+.intro
+  @include back-img("../../img/intro-back.png")
+
+  h
+    @include section__tittle
+
+  .intro__button
+    padding: 25px
+
+    border: 1px solid #000
+
+    background-color: #000
+    color: #fff
+    text-decoration: none
+
+    font-family: sans-serif
+
+
+
+// letsdo
+.letsdo
+  background-color: $blue
+  position: relative
+
+  .letsdo__inner
+    width: 80%
+    height: 65%
+
+    position: absolute
+
+    top: 50%
+    left: 50%
+
+    transform: translate(-50%, -50%)
+
+    display: flex
+    justify-content: space-between
+
+
+    .letsdo__tittle
+      @include section__tittle
+
+      font-size: 120px
+      text-align: left
+      writing-mode: vertical-rl
+      transform: rotate(180deg)
+      line-height: 100px
+
+      width: 35%
+      height: 100%
+
+      //background-color: red
+
+
+    .letsdo__body
+      width: 65%
+      height: 100%
+
+      .letsdo__inf
+        width: 100%
+        height: 90%
+
+        //background-color: green
+
+        position: relative
+
+        p
+          width: 45%
+          opacity: 0.8
+          font-family: system-ui
+          font-size: 17px
+          line-height: 40px
+
+        //.letsdo__p1
+
+        .letsdo__p2
+          position: absolute
+          right: 0
+          bottom: 0
+
+
+      .letsdo__button
+        width: 100%
+        height: 10%
+
+        //background-color: pink
+
+        position: relative
+
+        a
+          position: absolute
+          top: 50%
+          left: 50%
+
+          transform: translate(-50%, -50%)
+
+          padding: 25px
+
+          border-radius: 50px
+
+          color: #000
+
+          font-family: sans-serif
+          text-transform: uppercase
+          text-decoration: none
+
+          background-color: $blue-lighter
+
+
+
+
+// capabilities
+.capabilities
+  @include back-img("../../img/capabilities-back.png")
+  background-color: rgba(0, 0, 0, 0.97)
+
+
+
+// contact
+.contact
+  @include back-img("../../img/contacts-back.png")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* */

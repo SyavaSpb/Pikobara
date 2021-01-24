@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.section .anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  width: 80%;
+  height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
+.modal .modal__tittle {
+  width: 33%;
+  height: 100%;
+  padding: 80px;
+  font-family: "Montserrat";
+  font-size: 100px;
+  font-weight: 700;
+  text-align: left;
+  writing-mode: vertical-rl;
+  font-size: 75px;
+  background-color: #fff;
+  transform: rotate(180deg);
+  z-index: 101;
+}
+.modal .modal__tittle span {
+  position: relative;
+  background-color: #01ffde;
+  z-index: -1;
+}
+.modal .modal__form {
+  width: 67%;
+  height: 100%;
+  background: url("../../img/modal-back.png") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-attachment: scroll;
+  background-color: black;
+  z-index: 101;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+}
+.header .header__logo {
+  width: auto;
+  height: 100%;
+}
+.header .nav > * {
+  display: inline-block;
+}
+.header .nav .nav__link {
+  margin: 0px 25px;
+  color: #7d7d7c;
+  text-decoration: none;
+  position: relative;
+  font-family: system-ui;
+}
+.header .nav .nav__link:hover::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #01ffde;
+}
+
+.aside__slider {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translate(0, -50%);
+  z-index: 10;
+}
+.aside__slider div {
+  width: 14px;
+  height: 14px;
+  margin: 14px 0px;
+  cursor: pointer;
+  border: 1px solid #01ffde;
+  border-radius: 7px;
+  transition: border linear 0.25s;
+}
+.aside__slider .slider__item__active {
+  width: 15px;
+  height: 15px;
+  border: 6px solid #01ffde;
+  border-radius: 8px;
+}
+
+.intro {
+  background: url("../../img/intro-back.png") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.intro h {
+  font-family: "Montserrat";
+  font-size: 100px;
+  font-weight: 700;
+  text-align: left;
+}
+.intro h span {
+  position: relative;
+  background-color: #01ffde;
+  z-index: -1;
+}
+.intro .intro__button {
+  padding: 25px;
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+.letsdo {
+  background-color: #57b1fa;
+  position: relative;
+}
+.letsdo .letsdo__inner {
+  width: 80%;
+  height: 65%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+}
+.letsdo .letsdo__inner .letsdo__tittle {
+  font-family: "Montserrat";
+  font-size: 100px;
+  font-weight: 700;
+  text-align: left;
+  font-size: 120px;
+  text-align: left;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  line-height: 100px;
+  width: 35%;
+  height: 100%;
+}
+.letsdo .letsdo__inner .letsdo__tittle span {
+  position: relative;
+  background-color: #01ffde;
+  z-index: -1;
+}
+.letsdo .letsdo__inner .letsdo__body {
+  width: 65%;
+  height: 100%;
+}
+.letsdo .letsdo__inner .letsdo__body .letsdo__inf {
+  width: 100%;
+  height: 90%;
+  position: relative;
+}
+.letsdo .letsdo__inner .letsdo__body .letsdo__inf p {
+  width: 45%;
+  opacity: 0.8;
+  font-family: system-ui;
+  font-size: 17px;
+  line-height: 40px;
+}
+.letsdo .letsdo__inner .letsdo__body .letsdo__inf .letsdo__p2 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.letsdo .letsdo__inner .letsdo__body .letsdo__button {
+  width: 100%;
+  height: 10%;
+  position: relative;
+}
+.letsdo .letsdo__inner .letsdo__body .letsdo__button a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 25px;
+  border-radius: 50px;
+  color: #000;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #01ffde;
+}
+
+.capabilities {
+  background: url("../../img/capabilities-back.png") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.97);
+}
+
+.contact {
+  background: url("../../img/contacts-back.png") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* */
+
+/*# sourceMappingURL=index.css.map */
