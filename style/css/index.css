@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto color";
+}
+
 .section {
   width: 100%;
   height: 100vh;
@@ -16,38 +20,62 @@
 }
 
 .modal {
-  width: 80%;
-  height: 90%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.5s linear;
+  z-index: -1;
+}
+.modal.modal__active {
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.modal.modal__active .modal__inner {
+  transform: translate(-50%, -50%);
+}
+.modal.modal__hide {
+  z-index: 100;
+}
+.modal .modal__inner {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -200%);
+  transition: transform 0.5s linear;
   display: flex;
   justify-content: space-between;
-  z-index: 100;
 }
-.modal .modal__tittle {
+.modal .modal__inner:not(.modal__vertical) {
+  flex-direction: row;
+  width: min(135.71vh, 95vw);
+  height: min(95vh, 66.5vw);
+}
+.modal .modal__inner:not(.modal__vertical) .modal__tittle {
   width: 33%;
   height: 100%;
-  padding: 80px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   font-family: "Montserrat";
   font-size: 100px;
   font-weight: 700;
   text-align: left;
-  writing-mode: vertical-rl;
-  font-size: 75px;
+  padding: 5.5%;
+  font-size: calc(calc(min(135.71vh, 95vw)*0.33) * 0.17);
   background-color: #fff;
-  transform: rotate(180deg);
   z-index: 101;
 }
-.modal .modal__tittle span {
+.modal .modal__inner:not(.modal__vertical) .modal__tittle span {
   position: relative;
   background-color: #01ffde;
   z-index: -1;
 }
-.modal .modal__form {
+.modal .modal__inner:not(.modal__vertical) .modal__form {
   width: 67%;
   height: 100%;
+  padding: 6%;
   background: url("../../img/modal-back.png") center no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -55,30 +83,387 @@
   background-color: black;
   z-index: 101;
 }
-
-.header {
+.modal .modal__inner:not(.modal__vertical) .modal__form form {
   width: 100%;
-  height: 80px;
-  position: fixed;
+  height: 100%;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form > form > * {
+  width: 100%;
+  margin: calc(min(95vh, 66.5vw)*0.02) 0px;
+  display: block;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .text__input {
+  width: 100%;
+  height: calc(min(95vh, 66.5vw)*0.07);
+  box-sizing: border-box;
+  padding-left: 3%;
+  border-radius: calc(min(95vh, 66.5vw)*0.035);
+  border: none;
+  font-size: calc(min(95vh, 66.5vw)*0.02);
+  font-family: "Montserrat";
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .text__input:focus {
+  outline: none;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select {
+  width: 100%;
+  position: relative;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select .select__button {
+  width: calc(calc(min(135.71vh, 95vw) * 0.67)*0.07);
+  height: calc(min(95vh, 66.5vw)*0.07);
+  position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  border-top-left-radius: calc(min(95vh, 66.5vw)*0.035);
+  border-bottom-left-radius: calc(min(95vh, 66.5vw)*0.035);
+  z-index: 103;
+  line-height: calc(min(95vh, 66.5vw)*0.07);
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select .select__button img {
+  vertical-align: middle;
+  width: auto;
+  height: 30%;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select .select__button .selected__flag {
+  margin: 0 10%;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select .select__button .selecte__arrow {
+  transform: rotate(90deg);
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select .select__button:hover {
+  background-color: #e8e8e8;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select .text__input {
+  padding-left: calc(calc(calc(min(135.71vh, 95vw) * 0.67)*0.07)*1.03);
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select ul {
+  display: none;
+  width: 60%;
+  height: 300%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  overflow: auto;
+  z-index: 104;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select ul li {
+  width: 100%;
+  height: 14%;
+  list-style-type: none;
+  font-size: calc(calc(min(95vh, 66.5vw)*0.07)*0.3);
+  font-family: system-ui;
+  color: #7d7d7c;
+  cursor: pointer;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select ul li img {
+  margin: 0 3%;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select ul li:hover {
+  background-color: #e8e8e8;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select.select__active .select__button img:last-child {
+  transform: rotate(-90deg);
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .select.select__active ul {
+  display: block;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form textarea.text__input {
+  min-height: calc(min(95vh, 66.5vw)*0.09);
+  max-height: calc(min(95vh, 66.5vw)*0.15);
+  padding-top: 2%;
+  resize: vertical;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .form__policy {
+  color: #7d7d7c;
+  font-size: calc(min(95vh, 66.5vw)*0.02);
+  font-family: "Montserrat";
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .agree {
+  z-index: 103;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .agree * {
+  vertical-align: middle;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .agree .agree__checkbox {
+  display: none;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .agree .agree__checkbox__custom {
+  display: inline-block;
+  width: calc(min(95vh, 66.5vw)*0.025);
+  height: calc(min(95vh, 66.5vw)*0.025);
+  background-color: #fff;
+  border-radius: 3px;
+  position: relative;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .agree .agree__checkbox__custom svg {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(min(95vh, 66.5vw)*0.03);
+  height: calc(min(95vh, 66.5vw)*0.03);
+  z-index: 1001;
+  fill: #01ffde;
+  opacity: 0;
+  transition: 0.1s;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .agree .agree__checkbox:checked + .agree__checkbox__custom svg {
+  opacity: 1;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .agree .agree__prompt {
+  margin-left: 1%;
+  font-size: calc(min(95vh, 66.5vw)*0.022);
+  color: #fff;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .button__input {
+  margin: 0 auto;
+  width: 55%;
+  height: calc(min(95vh, 66.5vw)*0.08);
+  border-radius: calc(min(95vh, 66.5vw)*0.04);
+  background-color: #01ffde;
+  font-size: calc(min(95vh, 66.5vw)*0.03);
+  font-family: "Montserrat";
+  border: none;
+  transition: 0.2s;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .button__input:focus {
+  outline: none;
+}
+.modal .modal__inner:not(.modal__vertical) .modal__form .button__input:hover {
+  width: 53%;
+  height: calc(min(95vh, 66.5vw)*0.078);
+  font-size: calc(min(95vh, 66.5vw)*0.028);
+  border: 2px solid #000;
+}
+.modal .modal__inner.modal__vertical {
+  flex-direction: column;
+  width: 90vw;
+  height: 138vw;
+}
+.modal .modal__inner.modal__vertical .modal__tittle {
+  width: 100%;
+  height: 20%;
+  font-family: "Montserrat";
+  font-size: 100px;
+  font-weight: 700;
+  text-align: left;
+  padding: 5.5%;
+  font-size: calc(calc(138vw*0.2) * 0.17);
+  background-color: #fff;
+  z-index: 101;
+}
+.modal .modal__inner.modal__vertical .modal__tittle span {
+  position: relative;
+  background-color: #01ffde;
+  z-index: -1;
+}
+.modal .modal__inner.modal__vertical .modal__form {
+  width: 100%;
+  height: 80%;
+  padding: 6%;
+  background: url("../../img/modal-back.png") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-attachment: scroll;
+  background-color: black;
+  z-index: 101;
+}
+.modal .modal__inner.modal__vertical .modal__form form {
+  width: 100%;
+  height: 100%;
+}
+.modal .modal__inner.modal__vertical .modal__form > form > * {
+  width: 100%;
+  margin: calc(calc(138vw * 0.8)*0.02) 0px;
+  display: block;
+}
+.modal .modal__inner.modal__vertical .modal__form .text__input {
+  width: 100%;
+  height: calc(calc(138vw * 0.8)*0.07);
+  box-sizing: border-box;
+  padding-left: 3%;
+  border-radius: calc(calc(138vw * 0.8)*0.035);
+  border: none;
+  font-size: calc(calc(138vw * 0.8)*0.02);
+  font-family: "Montserrat";
+}
+.modal .modal__inner.modal__vertical .modal__form .text__input:focus {
+  outline: none;
+}
+.modal .modal__inner.modal__vertical .modal__form .select {
+  width: 100%;
+  position: relative;
+}
+.modal .modal__inner.modal__vertical .modal__form .select .select__button {
+  width: calc(90vw*0.07);
+  height: calc(calc(138vw * 0.8)*0.07);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top-left-radius: calc(calc(138vw * 0.8)*0.035);
+  border-bottom-left-radius: calc(calc(138vw * 0.8)*0.035);
+  z-index: 103;
+  line-height: calc(calc(138vw * 0.8)*0.07);
+}
+.modal .modal__inner.modal__vertical .modal__form .select .select__button img {
+  vertical-align: middle;
+  width: auto;
+  height: 30%;
+}
+.modal .modal__inner.modal__vertical .modal__form .select .select__button .selected__flag {
+  margin: 0 10%;
+}
+.modal .modal__inner.modal__vertical .modal__form .select .select__button .selecte__arrow {
+  transform: rotate(90deg);
+}
+.modal .modal__inner.modal__vertical .modal__form .select .select__button:hover {
+  background-color: #e8e8e8;
+}
+.modal .modal__inner.modal__vertical .modal__form .select .text__input {
+  padding-left: calc(calc(90vw*0.07)*1.03);
+}
+.modal .modal__inner.modal__vertical .modal__form .select ul {
+  display: none;
+  width: 60%;
+  height: 300%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  overflow: auto;
+  z-index: 104;
+}
+.modal .modal__inner.modal__vertical .modal__form .select ul li {
+  width: 100%;
+  height: 14%;
+  list-style-type: none;
+  font-size: calc(calc(calc(138vw * 0.8)*0.07)*0.3);
+  font-family: system-ui;
+  color: #7d7d7c;
+  cursor: pointer;
+}
+.modal .modal__inner.modal__vertical .modal__form .select ul li img {
+  margin: 0 3%;
+}
+.modal .modal__inner.modal__vertical .modal__form .select ul li:hover {
+  background-color: #e8e8e8;
+}
+.modal .modal__inner.modal__vertical .modal__form .select.select__active .select__button img:last-child {
+  transform: rotate(-90deg);
+}
+.modal .modal__inner.modal__vertical .modal__form .select.select__active ul {
+  display: block;
+}
+.modal .modal__inner.modal__vertical .modal__form textarea.text__input {
+  min-height: calc(calc(138vw * 0.8)*0.09);
+  max-height: calc(calc(138vw * 0.8)*0.15);
+  padding-top: 2%;
+  resize: vertical;
+}
+.modal .modal__inner.modal__vertical .modal__form .form__policy {
+  color: #7d7d7c;
+  font-size: calc(calc(138vw * 0.8)*0.02);
+  font-family: "Montserrat";
+}
+.modal .modal__inner.modal__vertical .modal__form .agree {
+  z-index: 103;
+}
+.modal .modal__inner.modal__vertical .modal__form .agree * {
+  vertical-align: middle;
+}
+.modal .modal__inner.modal__vertical .modal__form .agree .agree__checkbox {
+  display: none;
+}
+.modal .modal__inner.modal__vertical .modal__form .agree .agree__checkbox__custom {
+  display: inline-block;
+  width: calc(calc(138vw * 0.8)*0.025);
+  height: calc(calc(138vw * 0.8)*0.025);
+  background-color: #fff;
+  border-radius: 3px;
+  position: relative;
+}
+.modal .modal__inner.modal__vertical .modal__form .agree .agree__checkbox__custom svg {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(calc(138vw * 0.8)*0.03);
+  height: calc(calc(138vw * 0.8)*0.03);
+  z-index: 1001;
+  fill: #01ffde;
+  opacity: 0;
+  transition: 0.1s;
+}
+.modal .modal__inner.modal__vertical .modal__form .agree .agree__checkbox:checked + .agree__checkbox__custom svg {
+  opacity: 1;
+}
+.modal .modal__inner.modal__vertical .modal__form .agree .agree__prompt {
+  margin-left: 1%;
+  font-size: calc(calc(138vw * 0.8)*0.022);
+  color: #fff;
+}
+.modal .modal__inner.modal__vertical .modal__form .button__input {
+  margin: 0 auto;
+  width: 55%;
+  height: calc(calc(138vw * 0.8)*0.08);
+  border-radius: calc(calc(138vw * 0.8)*0.04);
+  background-color: #01ffde;
+  font-size: calc(calc(138vw * 0.8)*0.03);
+  font-family: "Montserrat";
+  border: none;
+  transition: 0.2s;
+}
+.modal .modal__inner.modal__vertical .modal__form .button__input:focus {
+  outline: none;
+}
+.modal .modal__inner.modal__vertical .modal__form .button__input:hover {
+  width: 53%;
+  height: calc(calc(138vw * 0.8)*0.078);
+  font-size: calc(calc(138vw * 0.8)*0.028);
+  border: 2px solid #000;
+}
+.modal .modal__inner .modal__close {
+  width: 4%;
+  height: 4%;
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  fill: #fff;
+  cursor: pointer;
+}
+
+.header {
+  width: 94vw;
+  height: 7%;
+  position: fixed;
+  top: 3vh;
+  left: 3vw;
+  right: 3vw;
   z-index: 10;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .header .header__logo {
   width: auto;
+  height: 70%;
+}
+.header .nav {
   height: 100%;
 }
 .header .nav > * {
   display: inline-block;
+  vertical-align: middle;
 }
 .header .nav .nav__link {
-  margin: 0px 25px;
+  margin: 0px 20px;
+  position: relative;
   color: #7d7d7c;
   text-decoration: none;
-  position: relative;
   font-family: system-ui;
 }
 .header .nav .nav__link:hover::after {
@@ -90,6 +475,26 @@
   top: 100%;
   left: 0;
   background-color: #01ffde;
+}
+.header .nav .start__project {
+  height: 100%;
+  color: #7d7d7c;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: system-ui;
+  cursor: pointer;
+  transform: rotate(-90deg);
+}
+.header .nav .start__project > * {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.header .nav .start__project span {
+  text-align: right;
+}
+.header .nav .start__project img {
+  width: auto;
+  height: 50%;
 }
 
 .aside__slider {

@@ -4,6 +4,8 @@
 
   box-sizing: border-box
 
+body
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto color"
 
 // colors:
 $blue: #57b1fa
@@ -39,84 +41,390 @@ $gray: #7d7d7c
     background-color: $blue-lighter
     z-index: -1
 
-
-
 // modal
 .modal
-  width: 80%
-  height: 90%
-
-  position: absolute
-  top: 50%
-  left: 50%
-
-  transform: translate(-50%, -50%)
-
-  display: flex
-  justify-content: space-between
-
-  z-index: 100
-
-  .modal__tittle
-    width: 33%
-    height: 100%
-
-    padding: 80px
-
-    @include section__tittle
-    writing-mode: vertical-rl
-    font-size: 75px
-
-    background-color: #fff
-
-    transform: rotate(180deg)
-
-    z-index: 101
-
-
-  .modal__form
-    width: 67%
-    height: 100%
-
-    @include back-img("../../img/modal-back.png")
-    background-attachment: scroll
-
-    background-color: rgba(0, 0, 0, 1)
-
-    z-index: 101
-
-
-
-// header
-.header
-  width: 100%
-  height: 80px
-
   position: fixed
   top: 0
   left: 0
   right: 0
+  bottom: 0
+
+  background-color: rgba(0, 0, 0, 0)
+
+  transition: background-color 0.5s linear
+
+  z-index: -1
+
+  &.modal__active
+    z-index: 100
+    background-color: rgba(0, 0, 0, 0.8)
+
+    .modal__inner
+      transform: translate(-50%, -50%)
+
+  &.modal__hide
+    z-index: 100
+
+  .modal__inner
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -200%)
+    transition: transform 0.5s linear
+    display: flex
+    justify-content: space-between
+
+    $form-with: 0
+    $form-height: 0
+
+    @mixin modall__tittle($size)
+        @include section__tittle
+        padding: 5.5%
+        font-size: calc(#{$size} * 0.17)
+        background-color: #fff
+        z-index: 101
+
+    @mixin modal__form($width, $height)
+      padding: 6%
+      @include back-img("../../img/modal-back.png")
+      background-attachment: scroll
+      background-color: rgba(0, 0, 0, 1)
+
+      z-index: 101
+
+      form
+        width: 100%
+        height: 100%
+
+      >form>*
+        width: 100%
+        margin: calc(#{$height}*0.02) 0px
+        display: block
+
+      .text__input
+        width: 100%
+        height: calc(#{$height}*0.07)
+        box-sizing: border-box
+        padding-left: 3%
+        border-radius: calc(#{$height}*0.035)
+        border: none
+        font-size: calc(#{$height}*0.02)
+        font-family: 'Montserrat'
+        &:focus
+          outline: none
+
+      .select
+        width: 100%
+        position: relative
+        .select__button
+          //width: min(3.325vh, 2.31vw)
+          width: calc(#{$width}*0.07)
+          height: calc(#{$height}*0.07)
+          position: absolute
+          top: 0
+          left: 0
+          border-top-left-radius: calc(#{$height}*0.035)
+          border-bottom-left-radius: calc(#{$height}*0.035)
+          z-index: 103
+          line-height: calc(#{$height}*0.07)
+          img
+            vertical-align: middle
+            width: auto
+            height: 30%
+          .selected__flag
+            //margin: 0 10%
+            margin: 0 10%
+          .selecte__arrow
+            transform: rotate(90deg)
+          &:hover
+            background-color: #e8e8e8
+        .text__input
+          padding-left: calc(calc(#{$width}*0.07)*1.03)
+        ul
+          display: none
+          width: 60%
+          height: 300%
+          position: absolute
+
+          top: 100%
+          left: 0
+          background-color: #fff
+          overflow: auto
+          z-index: 104
+          li
+            width: 100%
+            height: 14%
+            list-style-type: none
+            //font-size: 100%
+            font-size: calc(calc(#{$height}*0.07)*0.3)
+            font-family: system-ui
+            color: $gray
+            cursor: pointer
+            img
+              margin: 0 3%
+            &:hover
+              background-color: #e8e8e8
+        &.select__active
+          .select__button
+            img
+              &:last-child
+                transform: rotate(-90deg)
+          ul
+            display: block
+
+      textarea.text__input
+        min-height: calc(#{$height}*0.09)
+        max-height: calc(#{$height}*0.15)
+        padding-top: 2%
+        resize: vertical
+
+      .form__policy
+        color: $gray
+        font-size: calc(#{$height}*0.02)
+        font-family: 'Montserrat'
+
+      .agree
+        z-index: 103
+        *
+          vertical-align: middle
+        .agree__checkbox
+          display: none
+        .agree__checkbox__custom
+          display: inline-block
+          width: calc(#{$height}*0.025)
+          height: calc(#{$height}*0.025)
+          background-color: #fff
+          border-radius: 3px
+          position: relative
+          svg
+            display: block
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            width: calc(#{$height}*0.03)
+            height: calc(#{$height}*0.03)
+            z-index: 1001
+            fill: $blue-lighter
+            opacity: 0
+            transition: 0.1s
+        .agree__checkbox:checked + .agree__checkbox__custom svg
+          opacity: 1
+        .agree__prompt
+          margin-left: 1%
+          font-size: calc(#{$height}*0.022)
+          color: #fff
+
+      .button__input
+        margin: 0 auto
+        width: 55%
+        height: calc(#{$height}*0.08)
+        border-radius: calc(#{$height}*0.04)
+        background-color: $blue-lighter
+        font-size: calc(#{$height}*0.03)
+        font-family: 'Montserrat'
+        border: none
+        transition: 0.2s
+        &:focus
+          outline: none
+        &:hover
+          width: 53%
+          height: calc(#{$height}*0.078)
+          font-size: calc(#{$height}*0.028)
+          border: 2px solid #000
+
+    &:not(.modal__vertical)
+      flex-direction: row
+      width: min(135.71vh, 95vw)
+      height: min(95vh, 66.5vw)
+      .modal__tittle
+        width: 33%
+        height: 100%
+        writing-mode: vertical-rl
+        transform: rotate(180deg)
+        @include modall__tittle(calc(min(135.71vh, 95vw)*0.33))
+      .modal__form
+        width: 67%
+        height: 100%
+        @include modal__form(calc(min(135.71vh, 95vw) * 0.67), min(95vh, 66.5vw))
+
+    &.modal__vertical
+      flex-direction: column
+      width: 90vw
+      height: 138vw
+      .modal__tittle
+        width: 100%
+        height: 20%
+        @include modall__tittle(calc(138vw*0.2))
+      .modal__form
+        width: 100%
+        height: 80%
+        @include modal__form(90vw, calc(138vw * 0.8))
+
+    .modal__close
+      $modal-close-k: 0.04
+      width: 4%
+      height: 4%
+      position: absolute
+      top: 4%
+      right: 4%
+      fill: #fff
+      cursor: pointer
+
+    // .modal__form
+    //   padding: calc(#{$form-height}*0.05)
+    //   padding: 5%
+    //   @include back-img("../../img/modal-back.png")
+    //   background-attachment: scroll
+    //   background-color: rgba(0, 0, 0, 1)
+    //
+    //   z-index: 101
+    //
+    //   form
+    //     width: 100%
+    //     height: 100%
+    //
+    //   >form>*
+    //     width: 100%
+    //     margin: calc(#{$form-height}*0.02) 0px
+    //     display: block
+    //
+    //   .text__input
+    //     width: 100%
+    //     height: calc(#{$form-height}*0.07)
+    //     box-sizing: border-box
+    //     padding-left: 3%
+    //     border-radius: min(3.325vh, 2.31vw)
+    //     border: none
+    //     font-size: calc(#{$form-height}*0.02)
+    //     font-family: 'Montserrat'
+    //     &:focus
+    //       outline: none
+    //
+    //   .select
+    //     width: 100%
+    //     position: relative
+    //     .select__button
+    //       //width: min(3.325vh, 2.31vw)
+    //       width: 50px
+    //       height: calc(#{$form-height}*0.07)
+    //       position: absolute
+    //       top: 0
+    //       left: 0
+    //       border-top-left-radius: min(3.325vh, 2.31vw)
+    //       border-bottom-left-radius: min(3.325vh, 2.31vw)
+    //       z-index: 10000
+    //       line-height: calc(#{$form-height}*0.07)
+    //       img
+    //         vertical-align: middle
+    //         &:last-child
+    //           transform: rotate(90deg)
+    //       &:hover
+    //         background-color: #e8e8e8
+    //     ul
+    //       display: none
+    //       //width: 60%
+    //       height: 300%
+    //       position: absolute
+    //       top: 100%
+    //       left: 0
+    //       background-color: #fff
+    //       overflow: auto
+    //       z-index: 100000
+    //       li
+    //         width: 100%
+    //         height: 14%
+    //         list-style-type: none
+    //         font-family: system-ui
+    //         color: $gray
+    //         cursor: pointer
+    //         &:hover
+    //           background-color: #e8e8e8
+    //     &.select__active
+    //       .select__button
+    //         img
+    //           &:last-child
+    //             transform: rotate(-90deg)
+    //       ul
+    //         display: block
+    //
+    //   .form__policy
+    //     color: $gray
+    //     font-family: 'Montserrat'
+    //
+    //   .agree
+    //     z-index: 1000
+    //     *
+    //       vertical-align: middle
+    //     .agree__checkbox
+    //       display: none
+    //     .agree__checkbox__custom
+    //       display: inline-block
+    //       width: 20px
+    //       height: 20px
+    //       background-color: #fff
+    //       border-radius: 3px
+    //       position: relative
+    //       svg
+    //         display: block
+    //         position: absolute
+    //         top: 50%
+    //         left: 50%
+    //         transform: translate(-50%, -50%)
+    //         width: 18px
+    //         height: 18px
+    //         z-index: 1001
+    //         fill: $gray
+    //         opacity: 0
+    //         transition: 0.1s
+    //     .agree__checkbox:checked + .agree__checkbox__custom svg
+    //       opacity: 1
+    //     .agree__prompt
+    //       color: #fff
+    //
+    //   .button__input
+    //     margin: 0 auto
+    //     width: 50%
+    //     height: 10%
+    //     background-color: $blue-lighter
+    //     font-family: 'Montserrat'
+    //     border: none
+    //     &:focus
+    //       outline: none
+
+
+// header
+.header
+  width: 94vw
+  height: 7%
+
+  position: fixed
+  top: 3vh
+  left: 3vw
+  right: 3vw
 
   z-index: 10
 
   display: flex
   justify-content: space-between
+  align-items: center
 
   .header__logo
     width: auto
-    height: 100%
+    height: 70%
 
   .nav
+    height: 100%
     >*
       display: inline-block
+      vertical-align: middle
     .nav__link
-      margin: 0px 25px
-
-      color: $gray
-      text-decoration: none
+      margin: 0px 20px
 
       position: relative
 
+      color: $gray
+      text-decoration: none
       font-family: system-ui
 
       &:hover::after
@@ -131,6 +439,29 @@ $gray: #7d7d7c
         left: 0
 
         background-color: $blue-lighter
+
+    .start__project
+      height: 100%
+      color: $gray
+      text-decoration: none
+      text-transform: uppercase
+      font-family: system-ui
+
+      cursor: pointer
+
+      transform: rotate(-90deg)
+
+      >*
+        display: inline-block
+        vertical-align: bottom
+
+      span
+        //height: 80%
+        text-align: right
+
+      img
+        width: auto
+        height: 50%
 
 
 

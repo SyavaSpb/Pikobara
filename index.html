@@ -9,13 +9,100 @@
 </head>
 
 <body>
+  <!-- close -->
+  <svg display="none">
+    <symbol viewBox="0 0 512 512" id="icon__close">
+      <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"></path>
+    </symbol></svg>
+  <!-- checked -->
+  <svg display="none">
+    <symbol viewBox="0 0 512 512" id="icon__checked">
+    <path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+    </symbol></svg>
 
-  <!-- <section class="modal">
-    <h class="modal__tittle">LET’S DO<br>SOMETHING<br><span>COOL</span> TOGETHER</h>
-    <div class="modal__form">
 
+
+  <section class="modal" data-close="true">
+    <div class="modal__inner modal__vertical">
+      <h class="modal__tittle">LET’S DO<br>SOMETHING<br><span>COOL</span> TOGETHER</h>
+      <div class="modal__form">
+        <svg class="modal__close" data-close="true">
+          <use xlink:href="#icon__close" data-close="true"></use>
+        </svg>
+        <form action="/">
+
+          <input class="text__input" type="text" name="name" placeholder="First and Last name"/>
+
+          <input class="text__input" type="text" placeholder="Company"/>
+
+          <div class="select">
+            <div class="select__button">
+              <img class="selected__flag" src="icons/countries/russia.png">
+              <img class="selecte__arrow" src="icons/start-icon.png">
+            </div>
+            <input class="text__input" type="text" placeholder="Country" value="Russia (Россия)"/>
+            <ul>
+              <li><img src="icons/countries/russia.png"><span class="select__value">Russia (Россия)</span></li>
+              <li><img src="icons/countries/united-states-of-america.png"><span class="select__value">United States</span></li>
+              <li><img src="icons/countries/united-kingdom.png"><span class="select__value">United Kingdom</span></li>
+              <li><img src="icons/countries/belarus.png"><span class="select__value">Belarus (Беларусь)</span></li>
+              <li><img src="icons/countries/andorra.png"><span class="select__value">Andorra</span></li>
+              <li><img src="icons/countries/angola.png"><span class="select__value">Angola</span></li>
+              <li><img src="icons/countries/argentina.png"><span class="select__value">Argentina</span></li>
+              <li><img src="icons/countries/austalli.png"><span class="select__value">Australia</span></li>
+              <li><img src="icons/countries/belgium.png"><span class="select__value">Belgium (België)</span></li>
+              <li><img src="icons/countries/czech-republic.png"><span class="select__value">Czech Republic (Česká republika)</span></li>
+              <li><img src="icons/countries/denmark.png"><span class="select__value">Denmark (Danmark)</span></li>
+              <li><img src="icons/countries/france.png"><span class="select__value">France</span></li>
+              <li><img src="icons/countries/philippines.png"><span class="select__value">Philippines</span></li>
+              <li><img src="icons/countries/serbia.png"><span class="select__value">Serbia (Србија)</span></li>
+              <li><img src="icons/countries/spain.png"><span class="select__value">Spain (España)</span></li>
+            </ul>
+          </div>
+
+          <input class="text__input" type="text" name="email" placeholder="Email"/>
+
+          <div class="select">
+            <div class="select__button">
+              <img class="selected__flag" src="icons/countries/russia.png">
+              <img class="selecte__arrow"  src="icons/start-icon.png">
+            </div>
+            <input class="text__input" type="text" placeholder="Phone" value="+7"/>
+            <ul>
+              <li><img src="icons/countries/russia.png"><span>Russia (Россия)</span> <span class="select__value">+7</span></li>
+              <li><img src="icons/countries/united-states-of-america.png"><span>United States</span> <span class="select__value">+1</span></li>
+              <li><img src="icons/countries/united-kingdom.png"><span>United Kingdom</span> <span class="select__value">+44</span></li>
+              <li><img src="icons/countries/belarus.png"><span>Belarus (Беларусь)</span> <span class="select__value">+375</span></li>
+              <li><img src="icons/countries/andorra.png"><span>Andorra</span> <span class="select__value">+376</span></li>
+              <li><img src="icons/countries/angola.png"><span>Angola</span> <span class="select__value">+244</span></li>
+              <li><img src="icons/countries/argentina.png"><span>Argentina</span> <span class="select__value">+54</span></li>
+              <li><img src="icons/countries/austalli.png"><span>Australia</span> <span class="select__value">+61</span></li>
+              <li><img src="icons/countries/belgium.png"><span>Belgium (België)</span> <span class="select__value">+32</span></li>
+              <li><img src="icons/countries/czech-republic.png"><span>Czech Republic (Česká republika)</span> <span class="select__value">+420</span></li>
+              <li><img src="icons/countries/denmark.png"><span>Denmark (Danmark)</span> <span class="select__value">+45</span></li>
+              <li><img src="icons/countries/france.png"><span>France</span> <span class="select__value">+33</span></li>
+              <li><img src="icons/countries/philippines.png"><span>Philippines</span> <span class="select__value">+63</span></li>
+              <li><img src="icons/countries/serbia.png"><span>Serbia (Србија)</span> <span class="select__value">+381</span></li>
+              <li><img src="icons/countries/spain.png"><span>Spain (España)</span> <span class="select__value">+34</span></li>
+            </ul>
+          </div>
+
+          <textarea class="text__input" placeholder="Detail"></textarea>
+
+          <p class="form__policy">We will be collecting and processingyour contact information and your interaction with our content. Read More</p>
+          <label class="agree">
+            <input type="checkbox" class="agree__checkbox"/>
+            <div class="agree__checkbox__custom"><svg><use xlink:href="#icon__checked"></use></svg></div>
+            <span class="agree__prompt">Yes, I accept the Privacy Policy</span>
+          </label>
+
+          <input class="button__input" type="submit" value="Send"/>
+
+        </form>
+      </div>
     </div>
-  </section> -->
+  </section>
+
 
   <header class="header">
     <img src="icons/pikobara-logo.png" class="header__logo">
@@ -27,10 +114,10 @@
       <a href="#" class="nav__link">Blog</a>
       <a href="#" class="nav__link">Careers</a>
       <a href="#" class="nav__link">Contact</a>
-      <a href="#">
-        <span>start <br> a project</span>
+      <div class="start__project">
+        <span>start<br>a project</span>
         <img src="icons/start-icon.png">
-      </a>
+      </div>
     </nav>
   </header>
 
@@ -116,6 +203,8 @@
 
 
   <script src="scripts/scrolling.js"></script>
+  <script src="scripts/modal.js"></script>
+  <script src="scripts/select.js"></script>
 
 </body>
 </html>

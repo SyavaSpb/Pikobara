@@ -82,6 +82,12 @@ window.onscroll = function() {
     return
   }
 
+  const modal = document.querySelector('.modal__active')
+  if (modal) {
+    window.scrollTo(0, scrollY)
+    return
+  }
+
   const anchorInd = anchorIndByName(window.location.hash.substring(1))
   const dir = Math.abs(window.scrollY - scrollY) / (window.scrollY - scrollY)
   window.location.hash = `#${document.anchors[anchorInd + dir].name}`
