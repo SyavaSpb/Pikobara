@@ -1,0 +1,228 @@
+.modal
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0, 0, 0, 0)
+  transition: background-color 0.5s linear
+  z-index: -1
+
+  .modal__inner
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -200%)
+    transition: transform 0.5s linear
+    display: flex
+    justify-content: space-between
+
+    @mixin modall__tittle($size)
+        @include section__tittle
+        padding: 5.5%
+        font-size: calc(#{$size} * 0.18)
+        background-color: #fff
+        z-index: 101
+
+    @mixin modal__form($width, $height)
+      padding: 6%
+      @include back-img("../../img/modal-back.png")
+      background-attachment: scroll
+      background-color: rgba(0, 0, 0, 1)
+
+      z-index: 101
+
+      form
+        width: 100%
+        height: 100%
+
+      form > *
+        width: 100%
+        margin: calc(#{$height}*0.02) 0px
+        display: block
+
+      .text__input
+        width: 100%
+        height: calc(#{$height}*0.07)
+        box-sizing: border-box
+        padding-left: calc(#{$width} * 0.03)
+        border-radius: calc(#{$height} * 0.035)
+        border: none
+        font-size: calc(#{$height} * 0.02)
+        font-family: 'Montserrat'
+        &:focus
+          outline: none
+
+      .select
+        position: relative
+        .select__button
+          position: absolute
+          top: 0
+          left: 0
+          width: calc(#{$width}*0.07)
+          height: calc(#{$height}*0.07)
+          border-top-left-radius: calc(#{$height}*0.035)
+          border-bottom-left-radius: calc(#{$height}*0.035)
+          z-index: 103
+          line-height: calc(#{$height}*0.07)
+          img
+            vertical-align: middle
+            width: 30%
+            height: auto
+          .selected__flag
+            margin: 0 10%
+          .selecte__arrow
+            transform: rotate(90deg)
+          &:hover
+            background-color: #e8e8e8
+        .text__input
+          padding-left: calc(calc(#{$width}*0.07)*1.03)
+        ul
+          display: none
+          width: 60%
+          height: 300%
+          position: absolute
+          top: 100%
+          left: 0
+          background-color: #fff
+          overflow: auto
+          z-index: 104
+          li
+            width: 100%
+            height: 14%
+            list-style-type: none
+            //font-size: 100%
+            font-size: calc(calc(#{$height}*0.07)*0.3)
+            color: $gray
+            cursor: pointer
+            margin: 1% 0%
+            img
+              margin: 0% 3%
+              vertical-align: middle
+            &:hover
+              background-color: #e8e8e8
+        &.select__active
+          .select__button
+            img
+              &:last-child
+                transform: rotate(-90deg)
+          ul
+            display: block
+
+      textarea.text__input
+        min-height: calc(#{$height}*0.09)
+        max-height: calc(#{$height}*0.15)
+        padding-top: 2%
+        resize: vertical
+
+      .form__policy
+        color: $gray
+        font-size: calc(#{$height}*0.02)
+        font-family: 'Montserrat'
+
+      .agree
+        z-index: 103
+        *
+          vertical-align: middle
+        .agree__checkbox
+          display: none
+        .agree__checkbox__custom
+          display: inline-block
+          width: calc(#{$height}*0.025)
+          height: calc(#{$height}*0.025)
+          background-color: #fff
+          border-radius: 3px
+          position: relative
+          svg
+            display: block
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            width: calc(#{$height}*0.03)
+            height: calc(#{$height}*0.03)
+            z-index: 1001
+            fill: $blue-lighter
+            opacity: 0
+            transition: 0.1s
+        .agree__checkbox:checked + .agree__checkbox__custom svg
+          opacity: 1
+        .agree__prompt
+          margin-left: 1%
+          font-size: calc(#{$height}*0.022)
+          color: #fff
+
+      .button__input
+        margin: 0 auto
+        width: 55%
+        height: calc(#{$height}*0.08)
+        border-radius: calc(#{$height}*0.04)
+        background-color: $blue-lighter
+        font-size: calc(#{$height}*0.03)
+        font-family: 'Montserrat'
+        border: none
+        transition: 0.2s
+        &:focus
+          outline: none
+        &:hover
+          width: 53%
+          height: calc(#{$height}*0.078)
+          font-size: calc(#{$height}*0.028)
+          border: 2px solid #000
+
+    @include landscape
+      flex-direction: row
+      width: min(135.71vh, 95vw)
+      height: min(95vh, 66.5vw)
+      .modal__tittle
+        width: 33%
+        height: 100%
+        writing-mode: vertical-rl
+        transform: rotate(180deg)
+        @include modall__tittle(calc(min(135.71vh, 95vw)*0.33))
+      .modal__form
+        width: 67%
+        height: 100%
+        @include modal__form(calc(min(135.71vh, 95vw) * 0.67), min(95vh, 66.5vw))
+
+    @include portrait
+      flex-direction: column
+      width: min(95vw, 61vh)
+      height: min(145vw, 95vh)
+      .modal__tittle
+        width: 100%
+        height: 20%
+        writing-mode: horizontal-tb
+        transform: rotate(0deg)
+        @include modall__tittle(calc(min(145vw, 95vh)*0.2))
+      .modal__form
+        width: 100%
+        height: 80%
+        @include modal__form(min(95vw, 61vh), calc(min(145vw, 95vh) * 0.8))
+
+    .modal__close
+      position: absolute
+      cursor: pointer
+      @include landscape
+        top: 4%
+        right: 4%
+        width: 4%
+        height: 4%
+        fill: #fff
+      @include portrait
+        width: 30px
+        height: 30px
+        top: 20px
+        right: 20px
+        fill: #000
+      @include phone
+        top: 12px
+        right: 12px
+
+  &.modal__active
+    background-color: rgba(0, 0, 0, 0.8)
+    z-index: 100
+    .modal__inner
+      transform: translate(-50%, -50%)
+  &.modal__hide
+    z-index: 100

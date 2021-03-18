@@ -1,0 +1,175 @@
+.capabilities
+  background: url("./../../img/capabilities-back.png") center no-repeat
+  background-size: cover
+  background-attachment: fixed
+  background-color: rgba(0, 0, 0, 0.97)
+
+
+.capabilities__nav
+  @include landscape
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+  @include portrait
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    width: 100%
+
+  .capabilities__navItem
+    @include landscape
+      margin: 35px
+      color: gray
+    @include portrait
+      width: 48%
+      margin: 15px 0
+      padding: 0.2em
+      border: 1px solid $blue-lighter
+      border-radius: 2em
+      color: #fff
+      text-align: center
+
+  .capabilities__navItem-active
+    @include landscape
+      position: relative
+      color: #fff
+      &::before
+        content: ''
+        position: absolute
+        top: 50%
+        left: -25px
+        display: block
+        width: 14px
+        height: 125%
+        transform: translateY(-50%)
+        background-color: $blue-lighter
+    @include portrait
+      background-color: $blue-lighter
+      color: #000
+
+
+
+.capabilitie__item
+  display: none
+  width: 100%
+  height: 100%
+  &.capabilitie__item-active
+    display: block
+
+  .capabilitie__item__up
+    position: relative
+    width: 100%
+    height: 50%
+    @include portrait
+      height: 30vw
+    .capabilitie__item__tittle
+      position: relative
+      z-index: 4
+    .capabilitie__item__img
+      position: absolute
+      right: 8%
+      bottom: 0
+      z-index: 3
+      width: 80%
+      height: auto
+      transform: translate(-15px, -15px)
+      @include portrait
+        transform: translate(-1vw, -1vw)
+      // @include large-desktop
+      //   width: 900px
+      // @include desktop
+      //   width: 750px
+      // @include tablet-landscape
+      //   width: 550px
+      //   transform: translate(-10px, -10px)
+      // @include tablet-portrait
+      //   width: 550px
+      //   transform: translate(-10px, -10px)
+      // @include phone
+      //   width: 75%
+      //   transform: translate(-10px, -10px)
+    .capabilitie__item__imgBack
+      position: absolute
+      right: 8%
+      bottom: 0
+      z-index: 2
+      width: 50%
+      height: 70%
+      // width: 500px
+      // height: 250px
+      background-color: $blue-lighter
+      // @include tablet-landscape
+      //   width: 350px
+      //   height: 150px
+      // @include tablet-portrait
+      //   width: 500px
+      //   height: 200px
+
+
+  .capabilitie__item__descr
+    display: flex
+    height: 50%
+    padding: 3%
+    flex-wrap: wrap
+    .capabilitie__item__nav
+      position: relative
+      width: 50%
+      @include portrait
+        width: 100%
+      .capabilitie__item__navInner
+        @include landscape
+          position: absolute
+          left: 50%
+          transform: translateX(-50%)
+        .capabilitie__item__navItem
+          position: relative
+          margin-bottom: 14px
+          color: gray
+        .capabilitie__item__navItem-active
+          color: #fff
+          &:after
+            content: ''
+            position: absolute
+            top: 100%
+            left: 0
+            display: block
+            width: 5em
+            height: 1px
+            background-color: $blue-lighter
+
+    .capabilitie__item__inf
+      width: 50%
+      @include portrait
+        width: 100%
+      .capabilitie__item__infText
+        display: none
+        @include landscape
+          width: 70%
+        color: gray
+        &.capabilitie__item__infText-active
+          display: block
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

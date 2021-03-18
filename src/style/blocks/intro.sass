@@ -1,0 +1,110 @@
+.intro
+  background: url("./../../img/intro-back.png") center no-repeat
+  background-size: cover
+  background-attachment: fixed
+
+.intro__inner
+  position: relative
+  width: 100%
+
+.intro__tittle
+  position: relative
+  z-index: 3
+  display: block
+  width: 6em
+
+.intro__button
+  position: relative
+  z-index: 3
+  display: block
+  width: 14em
+  margin-top: 100px
+  margin-left: 270px
+  padding: 1em 0
+  background-color: black
+  border-radius: 2em
+
+  transition: 0.8s
+
+  @include phone
+    margin-top: 20px
+    margin-left: 40px
+  @include tablet-portrait
+    margin-left: 180px
+  @include tablet-landscape
+    margin-left: 270px
+  @include desktop
+    margin-left: 270px
+  @include large-desktop
+    margin-left: 320px
+
+// .intro__button-animation
+//   transform: translateX(-250px)
+
+
+.intro__imgContainer
+  position: absolute
+  bottom: 0
+  right: 0
+
+  transform-origin: center center
+  transform: scale(1)
+  transition: 0.8s
+
+  @include phone
+    width: 120px
+    height: 200px
+    transform: translate(-8px, -8px)
+  @include tablet-portrait
+    width: 300px
+    height: 400px
+  @include tablet-landscape
+    width: 700px
+    height: 400px
+  @include desktop
+    width: 700px
+    height: 400px
+  @include large-desktop
+    width: 1100px
+    height: 600px
+
+.intro__img
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 2
+
+  width: 100%
+  height: 100%
+  transform: translate(-25px, -25px)
+  background: url("./../../img/intro.png") center no-repeat
+  background-size: cover
+.intro__img-back
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 1
+
+  display: block
+  width: 100%
+  height: 100%
+  background-color: $blue-lighter
+
+// .intro__imgContainer-animation
+//   transform: scale(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* */

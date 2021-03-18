@@ -1,0 +1,38 @@
+@mixin phone
+  @media (max-width: 599px)
+    @content
+
+@mixin tablet-portrait
+  @media (min-width: 600px) and (max-width: 899px)
+    @content
+
+@mixin tablet-landscape
+  @media (min-width: 900px) and (max-width: 1199px)
+    @content
+
+@mixin desktop
+  @media (min-width: 1200px) and (max-width: 1799px)
+    @content
+
+@mixin large-desktop
+  @media (min-width: 1800px)
+    @content
+
+
+
+@mixin portrait
+  @include phone
+    @content
+
+  @include tablet-portrait
+    @content
+
+@mixin landscape
+  @include tablet-landscape
+    @content
+
+  @include desktop
+    @content
+
+  @include large-desktop
+    @content

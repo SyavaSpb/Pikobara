@@ -1,0 +1,47 @@
+.letsdo
+  background-color: $blue
+
+.letsdo__tittle
+  @include desktop
+    margin-left: 20%
+  @include large-desktop
+    margin-left: 170px
+
+.letsdo__inf
+  position: relative
+  height: 75%
+  @include tablet-portrait
+    display: flex
+
+.letsdo__p
+  @include landscape
+    width: 40%
+  @include tablet-portrait
+    width: 50%
+  @include portrait
+    padding: 20px
+
+.letsdo__p-1
+  @include landscape
+    position: absolute
+    top: 50px
+    left: 50px
+
+
+.letsdo__p-2
+  @include landscape
+    position: absolute
+    bottom: 50px
+    right: 50px
+
+.letsdo__slogan
+  margin-bottom: 14px
+
+.letsdo__button
+  display: block
+  width: 26em
+  height: 2em
+  line-height: 2em
+  border-radius: 1em
+  margin: 0 auto
+  background-color: $blue-lighter

@@ -1,0 +1,182 @@
+.header
+  position: fixed
+  z-index: 10
+  display: flex
+  justify-content: space-between
+  align-items: center
+  @include landscape
+    top: 30px
+    left: 50px
+    right: 40px
+    height: 60px
+    padding-right: 70px
+  @include tablet-landscape
+    height: 43px
+  @include large-desktop
+    max-width: 1700px
+    left: calc(50vw - 850px)
+    right: calc(50vw - 850px)
+  @include portrait
+    top: 0
+    left: 0
+    right: 0
+    width: 100%
+    padding: 0 3vw
+    background-color: #fff
+  @include phone
+    height: 60px
+  @include tablet-portrait
+    height: 80px
+
+  @keyframes nav__link__jump
+    0%
+      transform: translateY(-10vh)
+      opacity: 0
+    25%
+      transform: translateY(2.4vh)
+    30%
+      transform: translateY(3vh)
+      opacity: 1
+    60%
+      transform: translateY(-0.7vh)
+    80%
+      transform: translateY(0.7vh)
+    100%
+      transform: translateY(0px)
+
+  .header__menu
+    cursor: pointer
+    fill: $blue-lighter
+    @include landscape
+      display: none
+    @include portrait
+      display: inline-block
+    @include phone
+      width: 30px
+      height: 30px
+    @include tablet-portrait
+      width: 45px
+      height: 45px
+
+  .header__logo
+    width: auto
+    @include landscape
+      height: 100%
+      /* js animation */
+      animation: nav__link__jump 1s linear
+      animation-fill-mode: forwards
+    @include portrait
+      animation: none
+    @include phone
+      height: 40px
+    @include tablet-portrait
+      height: 60px
+
+  .nav
+    @include portrait
+      position: absolute
+      background-color: #fff
+      transition: transform 0.2s linear
+      &.nav__active
+        transform: translateX(100%)
+    @include phone
+      top: 60px
+      left: -75vw
+      width: 75vw
+      height: 100vh
+    @include tablet-portrait
+      top: 80px
+      left: -50vw
+      width: 50vw
+      height: 65vh
+
+    .nav__link
+      position: relative
+      color: $gray
+      text-decoration: none
+      letter-spacing: 2px
+      &.nav__link__active
+        color: #000
+        font-weight: bold
+    @include landscape
+      .nav__link
+        display: inline-block
+        transform-origin: center bottom
+        transition: transform 0.25s linear
+        &:hover
+          transform: scale(0.85)
+        &:hover::after, &.nav__link__active::after
+          content: ""
+          position: absolute
+          top: 100%
+          left: 0
+          display: block
+          width: 100%
+          height: 1px
+          background-color: $blue-lighter
+      .nav__link__anim
+        animation: nav__link__jump 1s linear
+        animation-fill-mode: forwards
+        transform: translateY(-10vh)
+        transition: none
+        @for $i from 1 through 7
+          &:nth-child(#{$i})
+            animation-delay: calc(#{$i}s * 0.3)
+    @include tablet-landscape
+      .nav__link
+        font-size: 18px
+        margin: 0 11px
+        letter-spacing: 1px
+    @include desktop
+      .nav__link
+        font-size: 21px
+        margin: 0 20px
+    @include large-desktop
+      .nav__link
+        font-size: 26px
+        margin: 0 23px
+    @include portrait
+      .nav__link
+        display: block
+        border-bottom: 1px solid $blue-lighter
+        &:first-child
+          border-top: 1px solid $blue-lighter
+    @include phone
+      .nav__link
+        padding: 3vh 4vw
+        font-size: 20px
+    @include tablet-portrait
+      .nav__link
+        padding: 2vh 3vw
+        font-size: 25px
+
+  .start__project
+    cursor: pointer
+    img
+      width: auto
+    @include landscape
+      position: absolute
+      right: 50px
+      text-transform: uppercase
+      font-size: 22px
+      color: $gray
+      transform-origin: top right
+      transform: rotate(-90deg)
+      > *
+        display: inline-block
+        vertical-align: middle
+      span
+        text-align: right
+      img
+        margin-left: 14px
+        height: 30px
+    @include portrait
+      position: relative
+      span
+        display: none
+    @include phone
+      img
+        height: 30px
+    @include tablet-portrait
+      img
+        height: 45px

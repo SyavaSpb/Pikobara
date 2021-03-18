@@ -1,0 +1,64 @@
+.hide
+  display: none !important
+
+.section
+  width: 100%
+  overflow: hidden
+  @include portrait
+    padding: 90px 20px
+  @include phone
+    padding: 50px 20px
+  @include landscape
+    height: 100vh
+    padding: 0 50px
+    padding-top: 15vh
+    padding-bottom: 8vh
+
+.container
+  width: 100%
+  height: 100%
+  margin: 0 auto
+  @include phone
+    min-height: 250px
+  @include tablet-portrait
+    min-height: 500px
+  @include tablet-landscape
+    max-width: 1400px
+    max-height: 600px
+  @include desktop
+    max-width: 1400px
+    max-height: 600px
+  @include large-desktop
+    max-width: 1800px
+    max-height: 800px
+
+.separation
+  display: flex
+  @include landscape
+    flex-direction: row
+  @include portrait
+    flex-direction: column
+
+.separation__title
+  // border: 1px solid red
+  position: relative
+  @include landscape
+    width: 25%
+  @include portrait
+    width: 100%
+
+.sideTitle
+  // border: 2px solid green
+  display: block
+  @include landscape
+    width: 100%
+    height: 100%
+    writing-mode: vertical-rl
+    transform: rotate(180deg)
+
+.separation__body
+  // border: 1px solid blue
+  @include landscape
+    width: 75%
+  @include portrait
+    width: 100%

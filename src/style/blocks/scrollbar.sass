@@ -1,0 +1,21 @@
+.scrollbar
+  @include portrait
+    display: none
+  position: fixed
+  top: 50%
+  right: 20px
+  transform: translateY(-50%)
+  z-index: 10
+  div
+    width: 14px
+    height: 14px
+    margin: 14px 0px
+    cursor: pointer
+    border: 1px solid $blue-lighter
+    border-radius: 7px
+    transition: border linear 0.25s
+  .scrollbar__item-active
+    width: 15px
+    height: 15px
+    border: 6px solid $blue-lighter
+    border-radius: 8px
