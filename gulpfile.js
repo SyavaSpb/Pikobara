@@ -69,14 +69,14 @@ function sass() {
   return src(path.src.sass)
     .pipe(sassConverter())
     // .pipe(concat('index.css'))
-    // .pipe(
-    //   autoprefixer({
-    //     overrideBrowserslist: ["last 5 versions"],
-    //     cascade: true
-    //   })
-    // )
-    // .pipe(groupMedia())
-    // .pipe(cleanCss())
+    .pipe(
+      autoprefixer({
+        overrideBrowserslist: ["last 5 versions"],
+        cascade: true
+      })
+    )
+    .pipe(groupMedia())
+    .pipe(cleanCss())
     .pipe(dest(path.build.css))
     .pipe(browsersync.stream())
 }
