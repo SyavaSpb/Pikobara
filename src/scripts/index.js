@@ -3,6 +3,7 @@
 @@include('./capabilities.js')
 @@include('./header.js')
 @@include('./modal.js')
+@@include('./select.js')
 
 window.onresize = function() {
   resizeNav()
