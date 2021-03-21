@@ -1,6 +1,11 @@
 # Pikobara
 http://saveliyportfolio.ru/pikobara/index.html  
-html, css, js, sass, gulp
+### Технологии
+ + html
+ + css
+ + js
+ + sass
+ + gulp
 ### Особенности:
  + Адаптивность
  + Скроллинг по блокам макета
